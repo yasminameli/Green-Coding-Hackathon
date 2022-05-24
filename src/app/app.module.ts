@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegionSelectionComponent } from './region-selection/region-selection.component';
 import { RestaurantDetailsComponent } from './restaurant-details/restaurant-details.component';
+import { GoodFoodRatingsService } from './services/gov-food-ratings.service';
 
 @NgModule({
   imports: [
@@ -24,7 +25,7 @@ import { RestaurantDetailsComponent } from './restaurant-details/restaurant-deta
     MatToolbarModule,
     MatSelectModule,
   ],
-  providers: [],
+  providers: [GoodFoodRatingsService],
   bootstrap: [AppComponent],
   declarations: [RegionSelectionComponent, RestaurantDetailsComponent, AppComponent],
 })

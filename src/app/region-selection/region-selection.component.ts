@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { map } from 'rxjs';
 import { IAuthorities } from '../interfaces/authorities.interface';
+import { IEstablishments } from '../interfaces/establishments.interface';
 import { IRegions } from '../interfaces/regions.interface';
 import { GoodFoodRatingsService } from '../services/gov-food-ratings.service';
 
@@ -9,22 +12,30 @@ import { GoodFoodRatingsService } from '../services/gov-food-ratings.service';
   templateUrl: './region-selection.component.html',
   styleUrls: ['./region-selection.component.css'],
 })
-export class RegionSelectionComponent implements OnInit {
+export class RegionSelectionComponent implements OnInit, AfterViewInit {
+
   tableLength = 0;
   regions: IRegions[] = []
   authorities: IAuthorities[] = []
   
   showAuthority = true;
-  showTable = false
+  showTable = false;
 
   displayedColumns: string[] = ['name', 'address', 'rating', 'lastInspection'];
-  dataSource: any[] = []
+  dataSource = new MatTableDataSource<IEstablishments>();
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  
   constructor(private goodFood: GoodFoodRatingsService) {}
 
   ngOnInit(): void {
     this.goodFood.getRegions().subscribe(response => {
       this.regions = response.regions;
     });
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
   regionOnChange($event: any) {
@@ -40,7 +51,7 @@ export class RegionSelectionComponent implements OnInit {
     // call restaurant api and display on table
     this.goodFood.getEstablishments($event.value).subscribe(response => {
       this.tableLength = response.establishments.length;
-      this.dataSource = response.establishments
+      this.dataSource.data = response.establishments
     })
     this.showTable = true;
   }

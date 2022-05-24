@@ -13,5 +13,6 @@ export interface IEstablishments {
   BusinessType: string;
   RatingValue: string;
   RatingDate: string;
+  PostCode: string;
   links: ILinks[];
 }

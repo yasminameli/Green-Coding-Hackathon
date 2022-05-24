@@ -22,7 +22,7 @@ export class GoodFoodRatingsService {
 
   public getAuthorities(): Observable<IAuthoritiesResponse> {
     return this.http.get<IAuthoritiesResponse>(
-      'https://api.ratings.food.gov.uk/regions',
+      'https://api.ratings.food.gov.uk/authorities',
       {
         headers: {
           'x-api-version': '2',
@@ -35,7 +35,7 @@ export class GoodFoodRatingsService {
     localAuthorityId: number
   ): Observable<IEstablishmentsResponse> {
     return this.http.get<IEstablishmentsResponse>(
-      `https://api.ratings.food.gov.uk/regions?localAuthorityId=${localAuthorityId}&businessTypeId=1`,
+      `https://api.ratings.food.gov.uk/establishments?localAuthorityId=${localAuthorityId}&businessTypeId=1`,
       {
         headers: {
           'x-api-version': '2',

@@ -26,6 +26,6 @@ import { RestaurantDetailsComponent } from './restaurant-details/restaurant-deta
   ],
   providers: [],
   bootstrap: [AppComponent],
-  declarations: [RegionSelectionComponent, RestaurantDetailsComponent],
+  declarations: [RegionSelectionComponent, RestaurantDetailsComponent, AppComponent],
 })
 export class AppModule {}

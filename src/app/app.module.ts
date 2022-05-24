@@ -12,7 +12,8 @@ import { AppComponent } from './app.component';
 import { RegionSelectionComponent } from './region-selection/region-selection.component';
 import { RestaurantDetailsComponent } from './restaurant-details/restaurant-details.component';
 import { GoodFoodRatingsService } from './services/gov-food-ratings.service';
-
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   imports: [
     BrowserModule,
@@ -24,9 +25,15 @@ import { GoodFoodRatingsService } from './services/gov-food-ratings.service';
     MatTableModule,
     MatToolbarModule,
     MatSelectModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [GoodFoodRatingsService],
   bootstrap: [AppComponent],
-  declarations: [RegionSelectionComponent, RestaurantDetailsComponent, AppComponent],
+  declarations: [
+    RegionSelectionComponent,
+    RestaurantDetailsComponent,
+    AppComponent,
+  ],
 })
 export class AppModule {}

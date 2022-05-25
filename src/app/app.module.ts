@@ -15,6 +15,8 @@ import { RegionSelectionComponent } from './region-selection/region-selection.co
 import { RestaurantDetailsComponent } from './restaurant-details/restaurant-details.component';
 import { GoodFoodRatingsService } from './services/gov-food-ratings.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
+    MatIconModule,
   ],
   providers: [GoodFoodRatingsService],
   bootstrap: [AppComponent],

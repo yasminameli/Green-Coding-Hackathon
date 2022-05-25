@@ -1,30 +1,31 @@
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
 <h1 class="mat-headline">Restaurant Details</h1>
-<mat-card>
-  <h2 class="mat-body-1">Location and Contact</h2>
-</mat-card>
 
-<mat-card>
-  <h2 class="mat-body-1">Food Rating Inspection</h2>
-</mat-card>
-
-<mat-card>
-  <mat-card-title> Address: </mat-card-title>
-  <mat-card-content
-    ><p class="mat-body-1">{{ address1 }}</p>
-    <p class="mat-body-1">{{ address2 }}</p>
-    <p class="mat-body-1">{{ address3 }}</p>
-    <p class="mat-body-1">{{ address4 }}</p></mat-card-content
-  >
-</mat-card>
 <div *ngIf="restaurantDetail$ | async as restaurantDetail">
   <mat-card>
-    <h2 class="mat-body-1">Location and Contact</h2>
-    <p class="mat-body-1">{{ restaurantDetail.BusinessName }}</p>
-  </mat-card>
+    <h2 class="mat-h2">Location and Contact</h2>
+    <p class="mat-body-1">{{ restaurantDetail.BusinessName }}</p> </mat-card
+  ><br />
 
   <mat-card>
-    <h2 class="mat-body-1">Food Rating Inspection</h2>
-    <p class="mat-body-1">{{ restaurantDetail.RatingValue }}</p>
-    <p class="mat-body-1">{{ restaurantDetail.RatingDate | date }}</p>
-  </mat-card>
+    <h2 class="mat-h2">Food Hygiene Rating Inspection</h2>
+    <p class="mat-body-1">Rating: {{ restaurantDetail.RatingValue }}</p>
+    <p class="mat-body-1">
+      Last Inspection Date: {{ restaurantDetail.RatingDate | date }}
+    </p> </mat-card
+  ><br />
+
+  <mat-card
+    ><h2 class="mat-h2">Address</h2>
+    <p class="mat-body-1">{{ restaurantDetail.AddressLine1 }}</p>
+    <p class="mat-body-1">{{ restaurantDetail.AddressLine2 }}</p>
+    <p class="mat-body-1">{{ restaurantDetail.AddressLine3 }}</p>
+    <p class="mat-body-1">{{ restaurantDetail.AddressLine4 }}</p>
+    <p class="mat-body-1">{{ restaurantDetail.PostCode }}</p></mat-card
+  ><br />
 </div>
+
+<a href="region-selection"><mat-icon>arrow_back</mat-icon></a>

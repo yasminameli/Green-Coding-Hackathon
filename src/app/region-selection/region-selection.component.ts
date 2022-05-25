@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { IAuthorities } from '../interfaces/authorities.interface';
 import { IEstablishments } from '../interfaces/establishments.interface';

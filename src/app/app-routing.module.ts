@@ -5,14 +5,12 @@ import { RestaurantDetailsComponent } from './restaurant-details/restaurant-deta
 
 const routes: Routes = [
   { path: 'region-selection', component: RegionSelectionComponent },
-  { path: 'restaurant-details', component: RestaurantDetailsComponent},
-  { path: '**', redirectTo:'region-selection'}
+  { path: 'restaurant-details', component: RestaurantDetailsComponent },
+  { path: '**', redirectTo: 'region-selection' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {
-  
-}
+export class AppRoutingModule {}

@@ -8,11 +8,35 @@ export interface IEstablishmentsResponse {
 
 export interface IEstablishments {
   FHRSID: number;
+  ChangesByServerID: number;
   LocalAuthorityBusinessID: string;
   BusinessName: string;
   BusinessType: string;
-  RatingValue: string;
-  RatingDate: string;
+  BusinessTypeID: number;
+  AddressLine1: string;
+  AddressLine2: string;
+  AddressLine3: string;
+  AddressLine4: string;
   PostCode: string;
-  links: ILinks[];
+  Phone: string;
+  RatingValue: string;
+  RatingKey: string;
+  RatingDate: string;
+  LocalAuthorityCode: string;
+  LocalAuthorityName: string;
+  LocalAuthorityWebSite: string;
+  LocalAuthorityEmailAddress: string;
+  scores: {
+    Hygiene: number;
+    Structural: number;
+    ConfidenceInManagement: number;
+  };
+  SchemeType: string;
+  geocode: {
+    longitude: string;
+    latitude: string;
+  };
+  RightToReply: string;
+  Distance: string;
+  NewRatingPending: true;
 }

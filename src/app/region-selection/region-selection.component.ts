@@ -6,6 +6,7 @@ import { IAuthorities } from '../interfaces/authorities.interface';
 import { IEstablishments } from '../interfaces/establishments.interface';
 import { IRegions } from '../interfaces/regions.interface';
 import { GoodFoodRatingsService } from '../services/gov-food-ratings.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-region-selection',
@@ -31,7 +32,10 @@ export class RegionSelectionComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private goodFood: GoodFoodRatingsService) {}
+  constructor(
+    private goodFood: GoodFoodRatingsService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.goodFood.getRegions().subscribe((response) => {
@@ -66,5 +70,9 @@ export class RegionSelectionComponent implements OnInit, AfterViewInit {
       this.dataSource.data = response.establishments;
     });
     this.showTable = true;
+  }
+
+  onNavigate(row: any) {
+    this.router.navigate(['restaurant-details'], { state: { row } });
   }
 }

@@ -62,7 +62,9 @@
     <ng-container matColumnDef="viewDetails">
       <mat-header-cell *matHeaderCellDef>View Details</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <a mat-button class="secondary">View Restaurant Details</a>
+        <a mat-button class="secondary" (click)="onNavigate(row)"
+          >View Restaurant Details</a
+        >
       </mat-cell>
     </ng-container>
 

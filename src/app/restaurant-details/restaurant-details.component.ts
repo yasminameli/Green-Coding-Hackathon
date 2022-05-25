@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, switchMap } from 'rxjs';
+import { IEstablishments } from '../interfaces/establishments.interface';
+import { GoodFoodRatingsService } from '../services/gov-food-ratings.service';
 
 @Component({
   selector: 'app-restaurant-details',
@@ -7,23 +10,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./restaurant-details.component.css'],
 })
 export class RestaurantDetailsComponent implements OnInit {
-  public address1!: string;
-  public address2!: string;
-  public address3!: string;
-  public address4!: string;
+  restaurantDetail$ = new Observable<IEstablishments>();
 
-  constructor(private router: Router) {
-    const navigation = this.router.getCurrentNavigation();
-    const state: any = navigation?.extras.state;
-    this.address1 = state?.row.AddressLine1;
-    this.address2 = state?.row.AddressLine2;
-    this.address3 = state?.row.AddressLine3;
-    this.address4 = state?.row.AddressLine4;
-  }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private goodFood: GoodFoodRatingsService
+  ) {}
 
-  ngOnInit(): void {}
-
-  value(address: any) {
-    return address;
+  ngOnInit(): void {
+    this.restaurantDetail$ = this.activatedRoute.queryParamMap.pipe(
+      switchMap((params) => {
+        return this.goodFood.getEstablishmentById(params.get('id')!);
+      })
+    );
   }
 }

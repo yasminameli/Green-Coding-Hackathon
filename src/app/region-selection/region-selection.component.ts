@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { IAuthorities } from '../interfaces/authorities.interface';
 import { IEstablishments } from '../interfaces/establishments.interface';
@@ -72,7 +73,9 @@ export class RegionSelectionComponent implements OnInit, AfterViewInit {
     this.showTable = true;
   }
 
-  onNavigate(row: any) {
-    this.router.navigate(['restaurant-details'], { state: { row } });
+  viewRestaurantDetails(details: IEstablishments) {
+    this.router.navigate(['restaurant-details'], {
+      queryParams: { id: details.FHRSID },
+    });
   }
 }

@@ -11,37 +11,50 @@ import { GoodFoodRatingsService } from '../services/gov-food-ratings.service';
 })
 export class RegionSelectionComponent implements OnInit {
   tableLength = 0;
-  regions: IRegions[] = []
-  authorities: IAuthorities[] = []
-  
-  showAuthority = true;
-  showTable = false
+  regions: IRegions[] = [];
+  authorities: IAuthorities[] = [];
 
-  displayedColumns: string[] = ['name', 'address', 'rating', 'lastInspection'];
-  dataSource: any[] = []
+  showAuthority = true;
+  showTable = false;
+
+  displayedColumns: string[] = [
+    'name',
+    'address',
+    'rating',
+    'lastInspection',
+    'viewDetails',
+  ];
+  dataSource: any[] = [];
   constructor(private goodFood: GoodFoodRatingsService) {}
 
   ngOnInit(): void {
-    this.goodFood.getRegions().subscribe(response => {
+    this.goodFood.getRegions().subscribe((response) => {
       this.regions = response.regions;
     });
   }
 
   regionOnChange($event: any) {
-    this.goodFood.getAuthorities().pipe(map((response) => {
-      return response.authorities.filter(authority => authority.RegionName === $event.value)
-    })).subscribe(authorities => {
-      this.authorities = authorities
-    })
+    this.goodFood
+      .getAuthorities()
+      .pipe(
+        map((response) => {
+          return response.authorities.filter(
+            (authority) => authority.RegionName === $event.value
+          );
+        })
+      )
+      .subscribe((authorities) => {
+        this.authorities = authorities;
+      });
     this.showAuthority = false;
   }
 
   authorityOnChange($event: any) {
     // call restaurant api and display on table
-    this.goodFood.getEstablishments($event.value).subscribe(response => {
+    this.goodFood.getEstablishments($event.value).subscribe((response) => {
       this.tableLength = response.establishments.length;
-      this.dataSource = response.establishments
-    })
+      this.dataSource = response.establishments;
+    });
     this.showTable = true;
   }
 }

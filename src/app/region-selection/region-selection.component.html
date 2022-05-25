@@ -1,3 +1,4 @@
+<h1 class="mat-headline">Region Selection</h1>
 <h2 class="mat-body-1">Select a region:</h2>
 
 <mat-form-field appearance="fill">
@@ -27,7 +28,12 @@
 </mat-form-field>
 
 <div *ngIf="showTable">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+    caption="Restaurant List for selected region"
+  >
     <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 
@@ -51,6 +57,13 @@
       <td mat-cell *matCellDef="let element">
         {{ element.RatingDate | date }}
       </td>
+    </ng-container>
+
+    <ng-container matColumnDef="viewDetails">
+      <mat-header-cell *matHeaderCellDef>View Details</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <a mat-button class="secondary">View Restaurant Details</a>
+      </mat-cell>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

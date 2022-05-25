@@ -7,7 +7,6 @@ import { GoodFoodRatingsService } from '../services/gov-food-ratings.service';
 @Component({
   selector: 'app-restaurant-details',
   templateUrl: './restaurant-details.component.html',
-  styleUrls: ['./restaurant-details.component.css'],
 })
 export class RestaurantDetailsComponent implements OnInit {
   restaurantDetail$ = new Observable<IEstablishments>();

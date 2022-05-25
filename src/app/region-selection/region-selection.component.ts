@@ -1,12 +1,12 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { IAuthorities } from '../interfaces/authorities.interface';
 import { IEstablishments } from '../interfaces/establishments.interface';
 import { IRegions } from '../interfaces/regions.interface';
 import { GoodFoodRatingsService } from '../services/gov-food-ratings.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-region-selection',
@@ -73,9 +73,8 @@ export class RegionSelectionComponent implements OnInit, AfterViewInit {
   }
 
   viewRestaurantDetails(details: IEstablishments) {
-    console.log(details);
     this.router.navigate(['restaurant-details'], {
-      queryParams: {id :details.FHRSID}
+      queryParams: { id: details.FHRSID },
     });
   }
 }

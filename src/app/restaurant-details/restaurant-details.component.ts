@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, Observable, switchMap } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { IEstablishments } from '../interfaces/establishments.interface';
 import { GoodFoodRatingsService } from '../services/gov-food-ratings.service';
 
@@ -22,6 +22,6 @@ export class RestaurantDetailsComponent implements OnInit {
       switchMap((params) => {
         return this.goodFood.getEstablishmentById(params.get('id')!);
       })
-    )
+    );
   }
 }

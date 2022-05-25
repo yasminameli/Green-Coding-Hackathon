@@ -16,6 +16,8 @@ import { RestaurantDetailsComponent } from './restaurant-details/restaurant-deta
 import { GoodFoodRatingsService } from './services/gov-food-ratings.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PipeModule } from './pipes/pipes.module';
+import { MatIconModule } from '@angular/material/icon';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ import { PipeModule } from './pipes/pipes.module';
     BrowserAnimationsModule,
     MatCardModule,
     PipeModule,
+    MatIconModule,
   ],
   providers: [GoodFoodRatingsService],
   bootstrap: [AppComponent],

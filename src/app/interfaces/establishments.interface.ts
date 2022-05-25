@@ -14,5 +14,9 @@ export interface IEstablishments {
   RatingValue: string;
   RatingDate: string;
   PostCode: string;
+  AddressLine1: string;
+  AddressLine2: string;
+  AddressLine3: string;
+  AddressLine4: string;
   links: ILinks[];
 }
